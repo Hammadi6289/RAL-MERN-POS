@@ -21,6 +21,7 @@
   box-shadow: 0 0 3px #ccc;
   border-radius: 5px;
   margin: 10px;
+  overflow: auto;
 }
 
 .ant-layout-has-sider {
@@ -32,15 +33,32 @@
 }
 
 .ant-layout-sider {
-  border-radius: 20px;
-  padding-top: 5px;
+  border-radius: 10px !important;
+  padding-top: 10px !important;
 }
 
 .anticon svg {
   height: 20px;
   width: 20px;
-  font-size: 25px;
+  font-size: 20px;
   display: flex;
   align-items: center;
-  margin-left: 5px;
+  margin-left: 10px;
+}
+
+.ant-layout-header {
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-item {
+  padding-left: 20px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+.cart-item p {
+  margin-top: 10px;
+  font-weight: bold;
 }
