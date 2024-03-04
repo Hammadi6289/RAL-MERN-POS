@@ -25,3 +25,107 @@ body {
   height: 80px;
   width: 80px;
 }
+.category {
+  height: 40px; /* Reduced height */
+  width: 100px; /* Increased width for better alignment */
+  margin-right: 20px; /* Slightly reduced margin */
+  margin-bottom: 10px;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc; /* Add border for better separation */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  transition: all 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.category:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.category img {
+  margin-left: 5px;
+  width: 30px; /* Set specific width for all images */
+  height: 30px; /* Set specific height for all images */
+  object-fit: cover; /* Maintain aspect ratio and fill the container */
+}
+
+.category h4 {
+  margin-left: 5px;
+  font-size: 14px; /* Decrease font size for smaller text */
+}
+
+.category-active {
+  border: 2px solid green;
+  background-color: rgba(128, 128, 128, 0.1); /* Reduce background opacity */
+}
+
+/* ========= Register page ================ */
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.register-form {
+  background-color: #f0f2f5;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.register-form h1 {
+  background-color: #1890ff;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.register-form h3 {
+  background: linear-gradient(to bottom right, #1890ff, #32cd32);
+  text-align: center;
+  color: #fff;
+}
+
+.register-form form {
+  margin-top: 20px;
+}
+
+.register-form label {
+  font-weight: bold;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register-form .ant-form-item {
+  margin-bottom: 15px;
+}
+
+.register-form .ant-form-item-control-input-content {
+  display: flex;
+}
+
+.register-form .ant-form-item-control-input-content > span {
+  display: flex;
+  align-items: center;
+}
+
+.register-form .ant-form-item-explain {
+  color: #ff4d4f;
+}
+
+.register-form .ant-btn {
+  width: 100%;
+}
+
+.register-form .login-link {
+  text-align: right;
+}

@@ -6,6 +6,45 @@ import ItemList from "../components/ItemList";
 import { useDispatch } from "react-redux";
 const Homepage = () => {
   const [itemsData, setItemsData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const categories = [
+    {
+      name: "All", // Default category
+      imageUrl: "https://imgur.com/mNAss2q.jpg",
+    },
+    {
+      name: "White",
+      imageUrl: "https://i.imgur.com/KFTQ93t.jpg",
+    },
+    {
+      name: "Black",
+      imageUrl: "https://i.imgur.com/5F1RCSl.jpg",
+    },
+    {
+      name: "Red",
+      imageUrl: "https://i.imgur.com/73CJIuV.jpg",
+    },
+    {
+      name: "Yellow",
+      imageUrl: "https://imgur.com/fPU5nBI.jpg",
+    },
+    {
+      name: "Green",
+      imageUrl: "https://imgur.com/Hk44sJ3.jpg",
+    },
+    {
+      name: "Silver",
+      imageUrl: "https://imgur.com/GjXEGvn.jpg",
+    },
+    {
+      name: "Gray",
+      imageUrl: "https://i.imgur.com/wzn28F0.jpg",
+    },
+    {
+      name: "Blue",
+      imageUrl: "https://i.imgur.com/g1KpQCx.jpg",
+    },
+  ];
   const dispatch = useDispatch();
 
   //useEffect
@@ -27,14 +66,42 @@ const Homepage = () => {
     };
     getAllItems();
   }, []);
+
   return (
     <DefaultLayout>
-      <Row>
-        {itemsData.map((item) => (
-          <Col xs={24} lg={6} md={12} sm={6}>
-            <ItemList item={item} />
-          </Col>
+      <div className="d-flex">
+        {categories.map((category) => (
+          <div
+            key={category.name}
+            className={`d-flex category ${
+              selectedCategory.toUpperCase() === category.name.toUpperCase() &&
+              "category-active"
+            }`}
+            onClick={() => setSelectedCategory(category.name.toUpperCase())}
+          >
+            <h4>{category.name}</h4>
+            <img
+              src={category.imageUrl}
+              alt={category.name}
+              height="40"
+              width="60"
+            />
+          </div>
         ))}
+      </div>
+      <Row>
+        {itemsData
+          .filter(
+            // Filter items based on selected category
+            (item) =>
+              selectedCategory.toUpperCase() === "ALL" || // Show all items if "All" category is selected
+              item.category.toUpperCase() === selectedCategory.toUpperCase()
+          )
+          .map((item) => (
+            <Col xs={24} lg={6} md={12} sm={6}>
+              <ItemList key={item.id} item={item} />
+            </Col>
+          ))}
       </Row>
     </DefaultLayout>
   );
