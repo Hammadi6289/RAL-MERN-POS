@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import DefaultLayout from "./../components/DefaultLayout";
 import axios from "axios";
-import { Row, Col } from "antd";
+import { Row, Col, Input } from "antd";
 import ItemList from "../components/ItemList";
 import { useDispatch } from "react-redux";
+
+const { Search } = Input;
 const Homepage = () => {
   const [itemsData, setItemsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const categories = [
     {
       name: "All", // Default category
@@ -67,8 +70,19 @@ const Homepage = () => {
     getAllItems();
   }, []);
 
+  const handleSearch = (value) => {
+    setSearchQuery(value);
+  };
+
   return (
     <DefaultLayout>
+      {/* Search bar */}
+      <Search
+        placeholder="Search a color..."
+        allowClear
+        onSearch={handleSearch}
+        style={{ width: 400, marginBottom: 20 }}
+      />
       <div className="d-flex">
         {categories.map((category) => (
           <div
@@ -95,8 +109,11 @@ const Homepage = () => {
             // Filter items based on selected category
             (item) =>
               selectedCategory.toUpperCase() === "ALL" || // Show all items if "All" category is selected
-              item.category.toUpperCase() === selectedCategory.toUpperCase()
+              (item.category.toUpperCase() === selectedCategory.toUpperCase() &&
+                (searchQuery.trim() === "" ||
+                  item.name.toLowerCase().includes(searchQuery.toLowerCase()))) // Filter based on search query
           )
+
           .map((item) => (
             <Col xs={24} lg={6} md={12} sm={6}>
               <ItemList key={item.id} item={item} />
